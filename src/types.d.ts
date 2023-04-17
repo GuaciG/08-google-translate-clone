@@ -8,8 +8,8 @@ export type AutoLanguage = typeof AUTO_LANGUAGE
 export type FromLanguage = Language | AutoLanguage
 
 export interface State {
-  fromLanguage: string
-  toLanguage: string
+  fromLanguage: FromLanguage
+  toLanguage: Language
   fromText: string
   result: string
   loading: boolean
@@ -19,8 +19,8 @@ export type Action =
   // concatenamos diferentes tipos para cada action
   // ya que serán tipos diferentes y esperarán payload diferentes
 
-  | { type: 'SET_FROM_LANGUAGE'; payload: string }
+  | { type: 'SET_FROM_LANGUAGE'; payload: FromLanguage }
   | { type: 'INTERCHANGE_LANGUAGES' } // no need payload
-  | { type: 'SET_TO_LANGUAGE'; payload: string }
+  | { type: 'SET_TO_LANGUAGE'; payload: Language }
   | { type: 'SET_FROM_TEXT'; payload: string }
   | { type: 'SET_RESULT'; payload: string }
