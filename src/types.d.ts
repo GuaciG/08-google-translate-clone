@@ -24,3 +24,10 @@ export type Action =
   | { type: 'SET_TO_LANGUAGE'; payload: Language }
   | { type: 'SET_FROM_TEXT'; payload: string }
   | { type: 'SET_RESULT'; payload: string }
+
+// un enun es una forma en la que podíamos tener un objeto/diccionario
+// al que nos vamos a poder referir y que va a ser constante.
+export enum SectionType {
+  From = 'from',
+  To = 'to'
+}
