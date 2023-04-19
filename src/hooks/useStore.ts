@@ -27,9 +27,12 @@ function reducer(state: State, action: Action) {
     // logic of the state inside of reducer
     // this way we avoit it on the components
     if (state.fromLanguage === AUTO_LANGUAGE) return state
+    const loading = state.fromText !== ''
 
     return {
       ...state,
+      loading,
+      result: '',
       fromLanguage: state.toLanguage,
       toLanguage: state.fromLanguage
     }
@@ -37,23 +40,35 @@ function reducer(state: State, action: Action) {
 
   // payload is extra information given for the action
   if (type === 'SET_FROM_LANGUAGE') {
+    if (state.fromLanguage === action.payload) return state
+    const loading = state.fromText !== ''
+
     return {
       ...state,
-      fromLanguage: action.payload // use action.payload only where is typed
+      fromLanguage: action.payload, // use action.payload only where is typed
+      result: '',
+      loading
     }
   }
 
   if (type === 'SET_TO_LANGUAGE') {
+    if (state.toLanguage === action.payload) return state
+    const loading = state.fromText !== ''
+
     return {
       ...state,
-      toLanguage: action.payload // use action.payload only where is typed
+      toLanguage: action.payload, // use action.payload only where is typed
+      result: '',
+      loading
     }
   }
 
   if (type === 'SET_FROM_TEXT') {
+    const loading = action.payload !== ''
+
     return {
       ...state,
-      loading: true,
+      loading,
       fromText: action.payload, // use action.payload only where is typed
       result: ''
     }
