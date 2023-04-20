@@ -4,7 +4,7 @@ import { Container, Row, Col, Button, Stack } from 'react-bootstrap'
 
 import './App.css'
 import { useStore } from './hooks/useStore'
-import { AUTO_LANGUAGE } from './consts'
+import { AUTO_LANGUAGE, VOICE_FOR_LANGUAGE } from './consts'
 import { ArrowsIcon, ClipboardIcon, SpeakerIcon } from './components/Icons'
 import { LanguageSelector } from './components/LanguageSelector'
 import { SectionType } from './types.d'
