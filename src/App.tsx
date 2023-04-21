@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { Container, Row, Col, Button, Stack } from 'react-bootstrap'
+import { Container, Row, Col, Button, Navbar } from 'react-bootstrap'
 
 import './App.css'
 import { useStore } from './hooks/useStore'
@@ -55,41 +55,51 @@ function App() {
   }
 
   return (
-    <Container fluid>
-      <h2>Google Translate</h2>
-      <Row>
-        <Col>
-          <Stack gap={2}>
+    <>
+      <Navbar style={{ borderBottom: '1px solid #f1f1f1' }}>
+        <Container style={{ marginLeft: '0' }}>
+          <Navbar.Brand style={{ fontSize: '32px', fontWeight: 'bold' }}>
+            Google Translate
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+      <br />
+      <Container fluid>
+        <Row>
+          <Col>
             <LanguageSelector
               type={SectionType.From}
               value={fromLanguage}
               onChange={setFromLanguage}
             />
-            <TextArea
-              type={SectionType.From}
-              value={fromText}
-              onChange={setFromText}
-            />
-          </Stack>
-        </Col>
-
-        <Col xs='auto'>
-          <Button
-            variant='link'
-            disabled={fromLanguage === AUTO_LANGUAGE}
-            onClick={interchangeLanguages}
-          >
-            <ArrowsIcon />
-          </Button>
-        </Col>
-
-        <Col>
-          <Stack gap={2}>
+          </Col>
+          <Col xs='auto'>
+            <Button
+              variant='link'
+              disabled={fromLanguage === AUTO_LANGUAGE}
+              onClick={interchangeLanguages}
+            >
+              <ArrowsIcon />
+            </Button>
+          </Col>
+          <Col>
             <LanguageSelector
               type={SectionType.To}
               value={toLanguage}
               onChange={setToLanguage}
             />
+          </Col>
+        </Row>
+
+        <Row xs={1} md={2}>
+          <Col style={{ margin: '1rem 0' }}>
+            <TextArea
+              type={SectionType.From}
+              value={fromText}
+              onChange={setFromText}
+            />
+          </Col>
+          <Col style={{ margin: '1rem 0' }}>
             <div style={{ position: 'relative' }}>
               <TextArea
                 loading={loading}
@@ -113,10 +123,10 @@ function App() {
                 </Button>
               </div>
             </div>
-          </Stack>
-        </Col>
-      </Row>
-    </Container>
+          </Col>
+        </Row>
+      </Container>
+    </>
   )
 }
 
