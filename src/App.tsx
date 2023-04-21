@@ -34,7 +34,8 @@ function App() {
 
     translate({ fromLanguage, toLanguage, text: debouncedFromText })
       .then(result => {
-        if (result === null || result === undefined) return
+        /* if (result === null || result === undefined) return */
+        if (result == null) return
         setResult(result)
       })
       .catch(() => {
@@ -71,6 +72,7 @@ function App() {
             />
           </Stack>
         </Col>
+
         <Col xs='auto'>
           <Button
             variant='link'
@@ -80,6 +82,7 @@ function App() {
             <ArrowsIcon />
           </Button>
         </Col>
+
         <Col>
           <Stack gap={2}>
             <LanguageSelector
